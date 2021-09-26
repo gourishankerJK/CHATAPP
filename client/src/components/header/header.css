@@ -1,0 +1,10 @@
+.nav-bar {
+	grid-area: header;
+	background: var(--dark-color-a);
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

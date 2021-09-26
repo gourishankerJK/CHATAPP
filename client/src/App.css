@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+body {
+	background: #f6f5f7;
+	font-family: "Montserrat", sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+	overflow-y: hidden;
+}
+.container {
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 25% 50% 25%;
+	grid-template-rows: 15% 2% 80% 7%;
+	grid-template-areas: "header header header" ". . ." ". main-content ." "footer footer footer";
+	justify-content: center;
+}
