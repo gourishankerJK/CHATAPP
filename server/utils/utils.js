@@ -5,7 +5,7 @@ const formatMessage = (username, text) => {
 	return {
 		username: username,
 		message: text,
-		date: moment().format("h:mm:ss a"),
+		date: moment().format("h:mm a"),
 	};
 };
 const addUser = (id, username, room) => {
@@ -16,6 +16,9 @@ const addUser = (id, username, room) => {
 	);
 	if (existingUser) {
 		return { error: "Username is already taken" };
+	}
+	if (room === "" || username == "") {
+		return { error: "Enter the details again" };
 	}
 	const user = {
 		id,

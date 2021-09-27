@@ -42,6 +42,9 @@ io.on("connection", (socket) => {
 	});
 	socket.on("chatMessage", (message, callback) => {
 		const user = getUser(socket.id);
+		if (!user) {
+			return callback({ error: "Server disconnected , Login again!" });
+		}
 		io.to(user.room).emit("chatMessage", formatMessage(user.username, message));
 		callback();
 	});
@@ -54,5 +57,5 @@ io.on("connection", (socket) => {
 			);
 	});
 });
-const Port = process.env.PORT || 5000;
-httpServer.listen(5000, () => console.log("server started"));
+const PORT = process.env.PORT || 5000;
+httpServer.listen(PORT, () => console.log("server started"));
