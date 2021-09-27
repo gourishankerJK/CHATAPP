@@ -19,6 +19,10 @@ const ChatRoom = ({ username, room }) => {
 	}, []);
 	useEffect(() => {
 		socket = io(ENDPOINT, { transports: ["websocket"] });
+		if (!socket.connected) {
+			alert("Server offline , Please try again later");
+			history.replace("/");
+		}
 		socket.emit("join-room", { username, room }, (error) => {
 			if (error) {
 				alert(error.error);

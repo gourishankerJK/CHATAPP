@@ -23,6 +23,7 @@ const ChatWindow = ({
 	return (
 		<div className="chat-container">
 			<header className="chat-header">{`WelCome to ${room} Room`}</header>
+
 			<div className="chat-window">
 				<ul className="chat-messages" ref={scroll}>
 					{data.map((user, i) => {
