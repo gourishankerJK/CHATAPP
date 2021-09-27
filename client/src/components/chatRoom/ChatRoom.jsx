@@ -19,8 +19,12 @@ const ChatRoom = ({ username, room }) => {
 	}, []);
 	useEffect(() => {
 		socket = io(ENDPOINT, { transports: ["websocket"] });
-		console.log(socket);
-		socket.emit("join-room", { username, room }, () => {});
+		socket.emit("join-room", { username, room }, (error) => {
+			if (error) {
+				alert(error.error);
+				history.replace("/");
+			}
+		});
 		socket.on("message", (payload) => {
 			setData((data) => [...data, payload]);
 		});
@@ -37,7 +41,7 @@ const ChatRoom = ({ username, room }) => {
 
 	useEffect(() => {
 		socket.on("users", (payload) => {
-			setUsers([...users, payload]);
+			setUsers(payload);
 		});
 	}, [users]);
 
@@ -46,7 +50,11 @@ const ChatRoom = ({ username, room }) => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		socket.emit("chatMessage", message, () => {
+		socket.emit("chatMessage", message, (error) => {
+			if (error) {
+				alert(error.error);
+				history.replace("/");
+			}
 			setMessage((message) => "");
 		});
 	};
