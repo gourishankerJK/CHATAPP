@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 :root {
 	--dark-color-a: #667aff;
 	--dark-color-b: #7386ff;
@@ -24,7 +24,7 @@ body {
 	height: 100vh;
 	display: grid;
 	grid-template-columns: 15% 10% 50% 10% 15%;
-	grid-template-rows: 15% 1% 77% 1% 6%;
+	grid-template-rows: 10% 1% 82% 1% 6%;
 	grid-template-areas: "header header header header header" ". . . . ." ". . main-content . ." ". . . . ." "footer footer footer footer footer";
 	justify-content: center;
 	overflow-x: hidden;

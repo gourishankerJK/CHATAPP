@@ -23,18 +23,20 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-height: 500px;
-	overflow-y: scroll;
+	max-height: auto;
+	overflow-y: auto;
 }
-.message {
-	max-width: 55%;
+.chat-messages .message-container {
+	padding: 10px;
+	border-radius: 5px;
+	max-width: 40%;
 	width: fit-content;
 	height: fit-content;
 	word-wrap: break-word;
 }
-.chat-messages .message {
+
+.message {
 	padding: 10px;
-	margin: 15px 10px;
 	border-radius: 5px;
 	font-size: 15px;
 	font-weight: bold;
@@ -43,48 +45,28 @@
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
-.chat-messages .message {
-}
 .chat-user {
 	font-weight: 900;
-	font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
-	font-size: 0.7rem;
 	color: #141414;
-	margin-bottom: 5px;
+	font-size: 1.2rem;
+	font-variant-caps: all-petite-caps;
 }
-.self {
+.self,
+.self-message {
 	align-self: flex-end;
 }
-.self::after {
-	content: " ";
-	position: relative;
-	right: -38px;
-	top: -2px;
-	border-top: 14px solid transparent;
-	border-right: none;
-	border-left: 14px solid transparent;
-	border-bottom: 14px solid black;
-}
-.bot {
-	transform: scale(0.9);
-	background-color: black;
-	font-size: small;
+.bot,
+.bot-message {
 	align-self: center;
 }
-.others::after {
-	content: " ";
-	position: relative;
-	right: -38px;
-	top: -2px;
-	border-top: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-left: none;
-	border-bottom: 14px solid black;
+.others-message,
+.others {
+	align-self: flex-start;
 }
 .chat-datetime {
-	margin-top: 5px;
-	font-size: 0.5rem;
+	margin-left: 5px;
 	text-align: right;
+	font-size: 0.8rem;
 }
 
 .chat-input-form {
@@ -98,8 +80,27 @@
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px 12px 5px;
-	width: 100%;
+	width: 95%;
 }
 .message-send {
-	padding: 5px 1px;
+	border-radius: 0;
+	padding: 12px 15px;
+}
+@media only screen and (max-width: 850px) {
+	/* For mobile phones: */
+	.chat-messages .message-container {
+		max-width: 50%;
+	}
+}
+@media only screen and (max-width: 450px) {
+	/* For mobile phones: */
+	.chat-messages .message-container {
+		max-width: 60%;
+	}
+}
+@media only screen and (max-width: 250px) {
+	/* For mobile phones: */
+	.chat-messages .message-container {
+		max-width: 70%;
+	}
 }

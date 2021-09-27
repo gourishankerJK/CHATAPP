@@ -14,7 +14,7 @@ const ChatWindow = ({
 	});
 	const handleClassName = (name) => {
 		if (name) {
-			name = name.trim().toLowerCase();
+			username = username.trim().toLowerCase();
 			if (name === "bot") return name;
 			if (name === username) return "self";
 		}
@@ -23,18 +23,27 @@ const ChatWindow = ({
 	return (
 		<div className="chat-container">
 			<header className="chat-header">{`WelCome to ${room} Room`}</header>
-
 			<div className="chat-window">
 				<ul className="chat-messages" ref={scroll}>
 					{data.map((user, i) => {
 						return (
 							<li
 								key={i}
-								className={`message ${handleClassName(user.username)}`}
+								className={`message-container ${handleClassName(
+									user.username
+								)}`}
 							>
-								<h3 className="chat-user">{user.username}</h3>
-								<p>{user.message}</p>
-								<h3 className="chat-datetime">{user.date}</h3>
+								<div className="data-message">
+									<span className="chat-user">{user.username}</span>
+									<span className="chat-datetime">{user.date}</span>
+								</div>
+								<p
+									className={`message ${handleClassName(
+										user.username
+									)}-message`}
+								>
+									{user.message}
+								</p>
 							</li>
 						);
 					})}
@@ -50,7 +59,7 @@ const ChatWindow = ({
 					className="chat-input"
 				/>
 				<button type="submit" onClick={handleSubmit} className="message-send">
-					click here
+					<i className="fa fa-paper-plane" aria-hidden="true"></i>
 				</button>
 			</form>
 		</div>

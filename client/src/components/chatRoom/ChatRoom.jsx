@@ -19,7 +19,6 @@ const ChatRoom = ({ username, room }) => {
 	}, []);
 	useEffect(() => {
 		socket = io(ENDPOINT, { transports: ["websocket"] });
-		console.log(socket);
 		socket.emit("join-room", { username, room }, (error) => {
 			if (error) {
 				alert(error.error);
