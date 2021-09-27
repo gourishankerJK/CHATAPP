@@ -5,13 +5,11 @@ const UserSideBar = ({ users }) => {
 		<div className="chat-user-sidebar">
 			<h3 className="chat-user-heading">Avaiable Persons</h3>
 			<ul className="list-users">
-				{users.map((user, id) =>
-					user.map((u, i) => (
-						<li className="list-users-item" key={i}>
-							<span>{i}</span> {u["username"]}
-						</li>
-					))
-				)}
+				{users.map((user, id) => (
+					<li className="list-users-item" key={id}>
+						{user.username.toUpperCase()}
+					</li>
+				))}
 			</ul>
 		</div>
 	);
