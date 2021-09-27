@@ -1,0 +1,43 @@
+.list-users {
+	padding-left: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.list-users-item {
+	height: 40px;
+	width: 100px;
+	margin: 2px 0px;
+	border: 2px;
+	border-radius: 5%;
+	padding: 10px;
+}
+.list-users-item:hover {
+	background-color: orange;
+}
+.chat-user-sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+.chat-user-heading {
+	background: var(--dark-color-a);
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 0px;
+	padding: 15px;
+	height: 50px;
+	font-size: medium;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+}
+@media only screen and (max-width: 450px) {
+	/* For mobile phones: */
+	.chat-user-sidebar {
+		display: none;
+	}
+}

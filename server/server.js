@@ -1,6 +1,12 @@
 const express = require("express");
-const { formatMessage, addUser, findUser } = require("./utils/utils");
-const { createServer } = require("http");
+const {
+	formatMessage,
+	getUser,
+	getUsersInRoom,
+	removeUser,
+	addUser,
+} = require("./utils/utils.js");
+const { createServer, get } = require("http");
 const { Server } = require("socket.io");
 const app = express();
 const httpServer = createServer(app);
@@ -13,21 +19,39 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-	socket.on("join-room", (user) => {
-		addUser(socket.id, user.username, user.room);
+	socket.on("join-room", ({ username, room }, callback) => {
+		const { error, user } = addUser(socket.id, username, room);
+
+		if (error) {
+			return callback(error);
+		}
+
+		socket.emit(
+			"message",
+			formatMessage("bot", `Welcome ${user.username} to the ${user.room} room `)
+		);
+		socket.broadcast
+			.to(user.room)
+			.emit(
+				"message",
+				formatMessage("bot", `${user.username} has joined the chat`)
+			);
+		socket.join(user.room);
+		io.to(user.room).emit("users", getUsersInRoom(user.room));
+		callback();
 	});
-
-	socket.broadcast.emit(
-		"message",
-		formatMessage("bot", `${findUser(socket.id).username} has joined the chat`)
-	);
-
+	socket.on("chatMessage", (message, callback) => {
+		const user = getUser(socket.id);
+		io.to(user.room).emit("chatMessage", formatMessage(user.username, message));
+		callback();
+	});
 	socket.on("disconnect", () => {
-		io.emit("message", `${findUser(socket.id).username} has left the chat`);
-	});
-
-	socket.on("chatMessage", (message) => {
-		io.emit("message", [formatMessage(socket.id, message)]);
+		const user = removeUser(socket.id);
+		if (user)
+			io.to(user.room).emit(
+				"message",
+				formatMessage("bot", `${user.username} has left the chat`)
+			);
 	});
 });
 const Port = process.env.PORT || 5000;

@@ -17,16 +17,27 @@
 
 body {
 	background: #f6f5f7;
-	font-family: "Montserrat", sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
-	overflow-y: hidden;
+	overflow-x: hidden;
 }
 .container {
 	height: 100vh;
 	display: grid;
-	grid-template-columns: 25% 50% 25%;
-	grid-template-rows: 15% 2% 80% 7%;
-	grid-template-areas: "header header header" ". . ." ". main-content ." "footer footer footer";
+	grid-template-columns: 15% 10% 50% 10% 15%;
+	grid-template-rows: 15% 1% 77% 1% 6%;
+	grid-template-areas: "header header header header header" ". . . . ." ". . main-content . ." ". . . . ." "footer footer footer footer footer";
 	justify-content: center;
+	overflow-x: hidden;
+}
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	container {
+		grid-template-areas: "header header header header header" ". . . . ." ". main-content main-content main-content ." ". . . . ." "footer footer footer footer footer";
+	}
+}
+@media only screen and (max-width: 450px) {
+	/* For mobile phones: */
+	container {
+		grid-template-areas: "header header header header header" ". . . . ." "main-content main-content main-content main-content main-content" ". . . . ." "footer footer footer footer footer";
+	}
 }

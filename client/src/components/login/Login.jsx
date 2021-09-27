@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./login.css";
-const Login = ({ error, handleUsername, handleRoom }) => {
-	useEffect(() => {
-		if (error) alert(error);
-	}, [error]);
+const Login = ({
+	handleUsername,
+	handleRoom,
+	handleSubmit,
+	username,
+	room,
+}) => {
+	console.log(username, room);
 	return (
 		<div className="join-room-container">
 			<div className="form-container">
@@ -12,19 +15,22 @@ const Login = ({ error, handleUsername, handleRoom }) => {
 					<h1>Join The Room</h1>
 					<input
 						type="text"
+						value={username}
 						placeholder="name"
 						onChange={handleUsername}
 						required
 					/>
 					<input
 						type="text"
+						value={room}
 						placeholder="Room"
 						onChange={handleRoom}
 						required
 					/>
-					<Link to="/chat">
-						<button type="submit">Join room</button>
-					</Link>
+
+					<button type="submit" onClick={handleSubmit}>
+						Join room
+					</button>
 				</form>
 			</div>
 		</div>
