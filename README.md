@@ -6,9 +6,9 @@ This example uses [@socket.io/server](https://www.npmjs.com/package/socket.io) (
 
 ## Preview
 
-    ![Login Screen](images/Login.png)
+    ![Login Screen](./images/Login.png)
 
-    ![Chat Screen](images/ChatScreen.png)
+    ![Chat Screen](./images/ChatScreen.png)
 
 ## Features
 
