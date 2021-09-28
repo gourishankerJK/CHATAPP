@@ -1,4 +1,4 @@
-# Simple Chat App with geckos.io
+# Simple Chat App with socket.io
 
 ## About
 
