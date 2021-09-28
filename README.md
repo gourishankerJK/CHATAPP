@@ -5,15 +5,17 @@
 This example uses [@socket.io/server](https://www.npmjs.com/package/socket.io) (4.2.0) on the node server and [@socket.io/client](https://www.npmjs.com/package/socket.io-client) (4.2.0) on the client side.
 
 ## Preview
+# Login Screen
+![LoginScreen](images/Login.png)
 
-    ![Login Screen](./images/Login.png)
-
-    ![Chat Screen](./images/ChatScreen.png)
+# Chat Screen
+![ChatScreen](images/ChatScreen.png)
 
 ## Features
 
-    1. Users can create different rooms and chat.
-    2.
+    1. Uses Express as the application Framework.
+    2. Real-time communication between a client and a server using Socket.io.
+    3. Uses React for frontend.
 
 ## How To Start
 
